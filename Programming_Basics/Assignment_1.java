@@ -1,34 +1,25 @@
 /*
-	Title : Write a program to check if a character is an alphabet
+    Title : To check if a character is an alphabet
 */
-//-------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------
 
-package Programming_Basics;
+class Assignment_1{
+    static boolean isAlphabet(char ch){
+        int ascii = (int)ch;
 
-import java.util.Scanner;
+        if((ascii >= 65 && ascii <= 90) || (ascii >= 97 && ascii <= 122))
+            return true;
 
-public class Assignment_1{
-	
-	// method to check if the character is an alphabet
-	static boolean isAlphabet(char param){
-		int ascii = (int)param;
-		// System.out.println("ascii : "+ascii);
+        return false;
+    }
 
-		if((ascii >= 65 && ascii <= 90) || (ascii >= 97 && ascii <= 122))
-			return true;
-		else
-			return false;
-	}
-	
-	public static void main(String[] args){
-		System.out.println(isAlphabet('A'));
-		System.out.println(isAlphabet('Z'));
-		System.out.println(isAlphabet('a'));
-		System.out.println(isAlphabet('z'));
-		System.out.println(isAlphabet('j'));
-		System.out.println(isAlphabet('K'));
-		System.out.println(isAlphabet('5'));
-		System.out.println(isAlphabet('*'));
-		System.out.println(isAlphabet('/'));
-	}
+    public static void main(String[] args){
+        
+        System.out.println(isAlphabet('a'));
+        System.out.println(isAlphabet('J'));
+        System.out.println(isAlphabet('K'));
+        System.out.println(isAlphabet('1'));
+        System.out.println(isAlphabet('$'));
+        System.out.println(isAlphabet('_')); 
+    }
 }
