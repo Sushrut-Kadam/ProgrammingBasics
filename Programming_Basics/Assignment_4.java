@@ -4,12 +4,24 @@
 //---------------------------------------------------------------------------------------------
 
 class Assignment_4{
+    static String[] indianPower = { 
+                        "thoudsand", 
+                        "lakh",
+                        "crore",
+                        "arab",
+                        "kharab",
+                        "nil",
+                        "padma",
+                        "shankh"
+                    };
+    
     static String[] westernPower = { 
-                        "thoudsands", 
-                        "millions",
-                        "billions",
-                        "trillions",
-                        "quadrillions"
+                        "thoudsand", 
+                        "million",
+                        "billion",
+                        "trillion",
+                        "quadrillion",
+                        "pentillion"
                     };
 
     static String[] doubleDigit = {
@@ -34,6 +46,38 @@ class Assignment_4{
         System.out.println(words[(((int)number.charAt(size-1))-48)-1]);
     }
     */
+// -----------------------------------------------------------------------------------------------
+
+    static void indianFormat(String number){
+        int size = number.length();
+        size = size-3;
+
+        int lastGroup = size%2;
+        int groups = size/2;
+
+        String index;
+        int position = 0;
+
+        if(lastGroup > 0){
+            index = number.substring(0,lastGroup);
+            printGroup(index);
+            System.out.print(indianPower[groups]+" ");
+            position += lastGroup;
+        }
+
+        while(groups > 0){
+            index = number.substring(position, position+2);
+            printGroup(index);
+            System.out.print(indianPower[groups-1]+" ");
+            groups--;
+            position = position+2;
+        }
+        index = number.substring(position, position+3);
+        printGroup(index);
+        
+
+    }
+
 // -----------------------------------------------------------------------------------------------
 
     static void westernFormat(String number){
@@ -104,18 +148,13 @@ class Assignment_4{
 
 // -----------------------------------------------------------------------------------------------
     public static void main(String[] args){
-        String input = "1483712957347";
+        String input = "1483712914"; 
+        System.out.println("Western System : ");
         westernFormat(input);
-        System.out.println();
+        System.out.println("\n");
         
-        // printGroup("345");
-        // System.out.println();
-        // printGroup("113");
-        // System.out.println();
-        // printGroup("241");
-        // System.out.println();
-        // printGroup("123");
-        // System.out.println();
-        // printGroup("215");
+        System.out.println("Indian System : ");
+        indianFormat(input);
+        System.out.println();
     }
 }
