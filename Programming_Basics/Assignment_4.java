@@ -70,31 +70,41 @@ class Assignment_4{
     static void printGroup(String index){
         int size = index.length();
 
-        if(size == 1)
-            System.out.print(words[Integer.parseInt(index.substring(0))-1]+" ");
-
         if(size == 3){
-            int pos1 = Integer.parseInt(index.substring(0,1));
+            // int pos1 = Integer.parseInt(index.substring(0,1));
+            int pos1 = Integer.parseInt(index.substring(size-3,size-3+1));
             System.out.print(words[pos1-1]+" hundred ");
-            size--;
+
+            int pos2 = Integer.parseInt(index.substring(size-2,size-2+1));
+
+            if(pos2 <= 1){
+                System.out.print(words[Integer.parseInt(index.substring(size-2))-1]+" ");
+            }
+            else{
+                System.out.print(doubleDigit[pos2-2]+"-"+words[Integer.parseInt(index.substring(size-1))-1]+" ");
+            }
         }
 
         if(size == 2){
-            int pos2 = Integer.parseInt(index.substring(1,2));
+            // int pos2 = Integer.parseInt(index.substring(1,2));
+            int pos2 = Integer.parseInt(index.substring(size-2,size-2+1));
 
             if(pos2 <= 1){
-                System.out.print(words[Integer.parseInt(index.substring(1))-1]+" ");
+                System.out.print(words[Integer.parseInt(index.substring(size-2))-1]+" ");
             }
             else{
-                System.out.print(doubleDigit[pos2-2]+"-"+words[Integer.parseInt(index.substring(2))-1]+" ");
+                System.out.print(doubleDigit[pos2-2]+"-"+words[Integer.parseInt(index.substring(size-1))-1]+" ");
             }
         }  
+
+        if(size == 1)
+            System.out.print(words[Integer.parseInt(index.substring(0))-1]+" ");
     
     }
 
 // -----------------------------------------------------------------------------------------------
     public static void main(String[] args){
-        String input = "6148371289573447";
+        String input = "1483712957347";
         westernFormat(input);
         System.out.println();
         
