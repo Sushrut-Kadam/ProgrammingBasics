@@ -18,7 +18,7 @@ class Node{
 }
 
 
-class Hashmap{
+class wordFrequency{
     static Node[] list = new Node[50];
 
     static int hash(String key){

@@ -117,13 +117,14 @@ class List{
             
             if(temp != null){
                 Node temp2 = head.next;
-                while(temp2.next != temp){
+                while((temp2.next != temp) && (temp2.next != null)){
                     temp2 = temp2.next;
                 }
                 temp2.next = temp.next;
+
+                return temp;
             }
-            
-            return temp;
+            return null;
         }
     }
 }
