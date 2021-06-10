@@ -3,7 +3,7 @@
  */
 //---------------------------------------------------------------------------------------------
 
-class Assignment_4{
+class numberToWords{
     static String[] indianPower = { 
                         "thoudsand", 
                         "lakh",
