@@ -112,3 +112,16 @@ class wordFrequency{
         frequency(key);
     }
 }
+
+//--------------------------------------------------------------------------------------------
+/**
+OOP Concepts :
+
+Data Encapsulation : Data + Methods encapsulated
+
+Data Abstraction : Using default access specifiers
+
+Aggregation : wordFrequency 'has a' Node
+
+Dependency : wordFrequency 'uses' Scanner, String
+ */

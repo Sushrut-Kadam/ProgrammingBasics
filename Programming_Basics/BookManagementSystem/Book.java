@@ -34,3 +34,13 @@ class Book{
         System.out.printf("| %-8.2f\n",getCost());
     }
 }
+
+//-------------------------------------------------------------------------------------
+/** 
+OOP Concepts Used : 
+
+Data Encapsulation : Data + Methods encapsulated
+
+Data Abstraction : Using private and public access specifiers
+
+ */

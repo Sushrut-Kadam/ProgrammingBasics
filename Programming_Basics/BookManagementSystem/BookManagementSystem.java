@@ -147,3 +147,14 @@ class BookManagementSystem{
 
     }
 }
+
+//--------------------------------------------------------------------------------------------
+/**
+OOP Concepts :
+
+Data Encapsulation : Data + Methods encapsulated
+
+Data Abstraction : Using default access specifiers
+
+Dependency : List 'uses' Scanner, ArrayList, String.
+ */

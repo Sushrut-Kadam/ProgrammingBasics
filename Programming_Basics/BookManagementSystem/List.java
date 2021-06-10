@@ -133,3 +133,16 @@ class List{
         }
     }
 }
+
+//---------------------------------------------------------------------------------------------
+/**
+OOP Concepts :
+
+Data Encapsulation : Data + Methods encapsulated
+
+Data Abstraction : Using default access specifiers
+
+Aggregation : List 'has a' Node.
+
+Dependency: List 'uses' ArrayList class and String class
+ */

@@ -172,3 +172,20 @@ class BookManagementSystem{
         }while(repeat == 'y' || repeat == 'Y');
     }
 }
+
+//--------------------------------------------------------------------------------------------
+/**
+OOP Concepts :
+
+Data Encapsulation : Data + Methods encapsulated
+
+Data Abstraction : Book class contains private and public access specifiers
+                   BookManagementSystem class contains default access specifier
+
+Aggregation : BookManagementSystem class 'has a' bookList(HashMap)
+              bookList class 'has a' Book
+
+Dependency : BookManagementSystem class 'uses' HashMap, ArrayList, Collection, Scanner, String
+
+
+ */
