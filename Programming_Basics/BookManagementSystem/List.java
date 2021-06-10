@@ -106,7 +106,7 @@ class List{
         if(this.head.next == null)
             return null;
         else{
-            Node temp = head.next;
+            Node temp = this.head.next;
 
             while(temp != null){
                 if(temp.book.getName().equals(name)){
@@ -114,17 +114,22 @@ class List{
                 }
                 temp = temp.next;
             }
-            
-            if(temp != null){
-                Node temp2 = head.next;
-                while((temp2.next != temp) && (temp2.next != null)){
-                    temp2 = temp2.next;
-                }
-                temp2.next = temp.next;
 
+            if(temp == null)
+                return temp;
+
+            if(head.next == temp){
+                head.next = temp.next;
                 return temp;
             }
-            return null;
+
+            Node temp2 = head.next;
+            while(temp2.next != temp){
+                temp2 = temp2.next;
+            }    
+            temp2.next = temp.next;
+
+            return temp; 
         }
     }
 }
