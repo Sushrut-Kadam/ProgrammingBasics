@@ -147,7 +147,7 @@ class wildcardExecution{
             if(pattern.charAt(pattern_index) == '['){
                 patternFlag = true;
                 keyLeft = pattern.substring(0,pattern_index);
-                temp = pattern_index;
+                temp = pattern_index+1;                         //index next to that of '['
             }
 
             if(!patternFlag){
@@ -178,8 +178,7 @@ class wildcardExecution{
                 input_index++;
                 
                 int key_index=1;                                  //because 0th index is checked already
-                while(key_index < leftStep){
-                    // System.out.println("1st while = i : "+input.charAt(i)+" j : "+keyLeft.charAt(j));
+                while(key_index < leftStep){                      //match before bracket ..[
                     if(input.charAt(input_index) != keyLeft.charAt(key_index)){
                         keyFlag = true;
                         break;
@@ -189,13 +188,11 @@ class wildcardExecution{
                     key_index++;
                 }
                 
-                boolean resultFlag = false;
                 if(!keyFlag){
-                    input_index++;
                     key_index=0;
-                    while(key_index < keySize){
+                    while(key_index < keySize){                     //match within bracket [..]
                         if(input.charAt(input_index) != key.charAt(key_index)){
-                            resultFlag = true;
+                            keyFlag = true;
                             break;
                         }
                         input_index++;
@@ -203,11 +200,9 @@ class wildcardExecution{
                     }
                 }
 
-                keyFlag = false;
-                if(!resultFlag){
-                    input_index++;
+                if(!keyFlag){
                     key_index = 0;
-                    while(key_index < rightStep){
+                    while(key_index < rightStep){                   //match after bracket ]..
                         if(input.charAt(input_index) != keyRight.charAt(key_index)){
                             keyFlag = true;
                             break;
@@ -231,10 +226,10 @@ class wildcardExecution{
 //----------------------------------------------------------------------------------------------------------------
     public static void main(String[] args){
         String input = "abcdefgh";
-        String pattern = "abc[de]fg";
+        String pattern = "abde";
 
-        // System.out.println(star(input, pattern));               // for wildcard *
-        // System.out.println(questionMark(input, pattern));       // for wildcard ?
-        System.out.println(brackets(input, pattern));
+        // System.out.println(star(input, pattern));                // for wildcard *
+        // System.out.println(questionMark(input, pattern));        // for wildcard ?
+        // System.out.println(brackets(input, pattern));            //for wildcard [..]
     }
 }   
