@@ -133,11 +133,108 @@ class wildcardExecution{
     }
 
 //----------------------------------------------------------------------------------------------------------------
+
+    static String brackets(String input, String pattern){
+        int patternSize = pattern.length();
+        int inputSize = input.length();
+        boolean patternFlag = false;
+
+        String keyLeft = "";
+        String keyRight = "";
+        String key = "";
+
+        for(int pattern_index = 0, temp=0; pattern_index < patternSize; pattern_index++){
+            if(pattern.charAt(pattern_index) == '['){
+                patternFlag = true;
+                keyLeft = pattern.substring(0,pattern_index);
+                temp = pattern_index;
+            }
+
+            if(!patternFlag){
+                keyLeft = pattern;
+            }
+            
+            if(pattern.charAt(pattern_index) == ']'){
+                key = pattern.substring(temp, pattern_index);
+                keyRight = pattern.substring(pattern_index+1);
+                patternFlag = true;
+            }
+
+            if(!patternFlag){
+                keyRight = "";
+            }
+        }
+
+        int leftStep = keyLeft.length();
+        int rightStep = keyRight.length();
+        int keySize = key.length();
+
+        int start,end;        
+
+        for(int input_index = 0; input_index < inputSize; input_index++){
+            if(input.charAt(input_index) == keyLeft.charAt(0)){
+                start = input_index;
+                boolean keyFlag = false;
+                input_index++;
+                
+                int key_index=1;                                  //because 0th index is checked already
+                while(key_index < leftStep){
+                    // System.out.println("1st while = i : "+input.charAt(i)+" j : "+keyLeft.charAt(j));
+                    if(input.charAt(input_index) != keyLeft.charAt(key_index)){
+                        keyFlag = true;
+                        break;
+                    }
+
+                    input_index++;
+                    key_index++;
+                }
+                
+                boolean resultFlag = false;
+                if(!keyFlag){
+                    input_index++;
+                    key_index=0;
+                    while(key_index < keySize){
+                        if(input.charAt(input_index) != key.charAt(key_index)){
+                            resultFlag = true;
+                            break;
+                        }
+                        input_index++;
+                        key_index++;
+                    }
+                }
+
+                keyFlag = false;
+                if(!resultFlag){
+                    input_index++;
+                    key_index = 0;
+                    while(key_index < rightStep){
+                        if(input.charAt(input_index) != keyRight.charAt(key_index)){
+                            keyFlag = true;
+                            break;
+                        }
+
+                        input_index++;
+                        key_index++;
+                    }
+                }
+
+                end = input_index;
+
+                if(!keyFlag){
+                    return input.substring(start, end);
+                }
+            }
+        }
+        return null;
+    }
+
+//----------------------------------------------------------------------------------------------------------------
     public static void main(String[] args){
         String input = "abcdefgh";
-        String pattern = "def*";
+        String pattern = "abc[de]fg";
 
-        System.out.println(star(input, pattern));               // for wildcard *
-        System.out.println(questionMark(input, pattern));       // for wildcard ?
+        // System.out.println(star(input, pattern));               // for wildcard *
+        // System.out.println(questionMark(input, pattern));       // for wildcard ?
+        System.out.println(brackets(input, pattern));
     }
 }   
