@@ -1,20 +1,32 @@
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Scanner;
 
 class Permutation{
     
-    static HashSet<String> table = new HashSet<>();
-    // static int count = 1;
+    static HashSet<String> table = new HashSet<>();             //hashset is used to store only unique permutations
+    
+    static void permute(char[] str, int index_1, int length){
+        
+        for(int j=index_1; j<length; j++){
+            /* 
+                System.out.println(Before swap : "+String.valueOf(str)); 
+            */
 
-    static void permute(char[] str, int index_1, int index_2){
-        if(index_2 == str.length){
+            swap(str, index_1, j);
+            permute(str, index_1+1, length);
+            
+            /* 
+                System.out.println("After swap : "+String.valueOf(str));
+            */
+            
             table.add(String.valueOf(str));
-            return;
+            swap(str, index_1, j);                    //we reverse the swapping to get the orignal string for swapping at the next position
+            
+            /* 
+                System.out.println("After backtrack : "+String.valueOf(str));
+            */
         }
-
-        swap(str, index_1, index_2);
-        permute(str, index_1, index_2+1);
-        swap(str, index_1, index_2);
     }
 
     static void swap(char[] str, int i, int j){
@@ -24,11 +36,16 @@ class Permutation{
     }
 
     public static void main(String[] args){
-        String input = "ab";
+        Scanner in = new Scanner(System.in);
+
+        System.out.print("Enter input string : ");
+        String input = in.nextLine();
         
-        int size = input.length();
-        
-        permute(input.toCharArray(), 0, 0);
+        permute(input.toCharArray(), 0, input.length());
+
+        /*    
+            System.out.println("Number of permutations : "+table.size());
+        */
 
         Iterator<String> iterator = table.iterator();
         while(iterator.hasNext()){
